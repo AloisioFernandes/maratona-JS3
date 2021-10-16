@@ -35,6 +35,7 @@ const Word = ({word, validKeys}) => {
 const App = () => {
   const [typedKeys, setTypedKeys] = useState([])
   const [validKeys, setValidKeys] = useState([])
+  const [completedWords, setCompletedWords] = useState([])
   const [word, setWord] = useState('')
 
   useEffect(() => {
