@@ -42,6 +42,20 @@ const App = () => {
     setWord(getWord())
   }, [])
 
+  useEffect(() => {
+    const wordFromValidKeys = validKeys.join('').toLowerCase()
+    if(word === wordFromValidKeys) {
+      let newWord = null
+      do {
+        newWord = getWord()
+      } while(completedWords.includes(newWord))
+
+      setWord(newWord)
+      setValidKeys([])
+      setCompletedWords((prev) => [...prev, word])
+    }
+  }, [word, validKeys, completedWords])
+
   const handleKeyDown = (e) => {
     e.preventDefault()
     const { key } = e;
